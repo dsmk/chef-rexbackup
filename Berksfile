@@ -1,4 +1,4 @@
 source 'https://supermarket.chef.io'
 
 metadata
-cookbook 'rexden', git: 'git://github.com/dsmk/chef-rexden.git'
+cookbook 'rexcore', git: 'git://github.com/dsmk/chef-rexcore.git'

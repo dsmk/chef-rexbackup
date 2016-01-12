@@ -5,7 +5,7 @@
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 #
 
-include_recipe 'rexden::_graphical'
+include_recipe 'rexcore::_graphical'
 include_recipe 'sysctl::default'
 
 %w( xorg-x11-apps xorg-x11-xauth ).each do |pkg|

@@ -7,4 +7,4 @@ long_description 'Installs/Configures rexbackup'
 version '0.1.0'
 
 depends 'sysctl'
-depends 'rexden'
+depends 'rexcore'
