@@ -67,7 +67,7 @@ if [ "${1}" != "recall" ] ; then
 	echo "Welcome to the Code42 ${APP_BASENAME} installer."
 	echo ""
 	echo -n "Press enter to continue with installation. "
-	read ENTER
+	#read ENTER
 	
 	# Basic requirements - 
 	echo ""
@@ -121,8 +121,8 @@ done
 # ===============================================================================
 # Continue validation by verifying the existence of a supported Java VM
 # ===============================================================================
-JAVACOMMON=$(which java)
-[[ $? == 1 ]] && JAVACOMMON=DOWNLOAD
+JAVACOMMON="DOWNLOAD"
+#[[ $? == 1 ]] && JAVACOMMON=DOWNLOAD
 if [[ $JAVACOMMON != DOWNLOAD ]]; then
     JAVAVERCHECK=old
     # Make sure the supplied Java is supported
@@ -150,12 +150,12 @@ echo ""
 echo "You must review and agree to the EULA before installation."
 echo ""
 echo -n "Press enter to read the EULA. "
-read ENTER
+#read ENTER
 
 # EULA Time
-more ./EULA.txt
+#more ./EULA.txt
 
-agreed=0
+agreed=1
 while [ "${agreed}" == "0" ] ; do
 	echo ""
 	echo -n "Do you accept and agree to be bound by the EULA? (yes/no) "
@@ -179,7 +179,8 @@ while [ ${INTERVIEW} == 0 ] ; do
 	while [ ${INTERVIEWSUB} == 0 ] ; do
 		echo ""
 		echo -n "What parent directory do you wish to install ${APP_BASENAME} into? [${PARENT_DIR}] "
-		read PARENT_DIR_X		
+		#read PARENT_DIR_X		
+    PARENT_DIR_X="$SET_PARENT_DIR"
 		if [ -n "${PARENT_DIR_X}" ] ; then
 			# remove trailing slash from PARENT_DIR
 			PARENT_DIR_X=`echo ${PARENT_DIR_X} | sed '{s/\/$//g}'`
@@ -203,7 +204,8 @@ while [ ${INTERVIEW} == 0 ] ; do
 		while [ ${INTERVIEWSUB} == 0 ] ; do
 			echo ""
 			echo -n "What directory do you wish to link the ${APP_BASENAME} executable to? [${BINSDIR}] "
-			read BINSDIR_X
+			#read BINSDIR_X
+      BINSDIR_X="$SET_BINSDIR"
 			if [ -n "${BINSDIR_X}" ] ; then
 				BINSDIR=${BINSDIR_X}
 			fi
@@ -218,7 +220,8 @@ while [ ${INTERVIEW} == 0 ] ; do
 	while [ ${INTERVIEWSUB} == 0 ] ; do
 		echo ""
 		echo -n "What directory do you wish to store incoming backup data? [${MANIFESTDIR}] "
-		read MANIFESTDIR_X
+		#read MANIFESTDIR_X
+    MANIFESTDIR_X="$SET_MANIFESTDIR"
 		if [ -n "${MANIFESTDIR_X}" ] ; then
 			MANIFESTDIR=${MANIFESTDIR_X}
 		fi
@@ -233,7 +236,8 @@ while [ ${INTERVIEW} == 0 ] ; do
 		while [ ${INTERVIEWSUB} == 0 ] ; do
 			echo ""
 			echo -n "What directory contains your SYSV init scripts? [${INITDIR}] "
-			read INITDIR_X
+			#read INITDIR_X
+      INITDIR_X="$INITDIR"
 			if [ -n "${INITDIR_X}" ] ; then
 				INITDIR=${INITDIR_X}
 			fi
@@ -247,7 +251,8 @@ while [ ${INTERVIEW} == 0 ] ; do
 		while [ ${INTERVIEWSUB} == 0 ] ; do
 			echo ""
 			echo -n "What directory contains your runlevel init links? [${RUNLVLDIR}] "
-			read RUNLVLDIR_X
+			#read RUNLVLDIR_X
+			RUNLVLDIR_X="$RUNLVLDIR"
 			if [ -n "${RUNLVLDIR_X}" ] ; then
 				RUNLVLDIR=${RUNLVLDIR_X}
 			fi
@@ -270,7 +275,7 @@ while [ ${INTERVIEW} == 0 ] ; do
 	fi
 	echo ""
 	echo -n "Is this correct? (y/n) [y] "
-	read YN
+	#read YN
 	if [ -z "${YN}" ] ; then
 		YN=y
 	fi
@@ -502,7 +507,7 @@ echo ""
 echo "${APP_BASENAME} has been installed and the Service has been started automatically."
 echo ""
 echo -n "Press Enter to complete installation. "
-read ENTER
+#read ENTER
 
 echo ""
 echo "Important directories:"
@@ -527,9 +532,9 @@ echo "  ${GUISCRIPT}"
 echo ""
 if [ -n "${DISPLAY}" ] ; then
 	echo -n "Would you like to start ${APP_BASENAME}Desktop? (y/n) [y] "
-	read reply
+	#read reply
 	if [ -z "${reply}" ] ; then
-		reply=y
+		reply=n
 	fi
 	case ${reply} in
 		[yY] | [yY][eE][sS])
