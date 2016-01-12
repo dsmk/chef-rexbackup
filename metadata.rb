@@ -4,7 +4,7 @@ maintainer_email 'david@rexden.us'
 license 'all_rights'
 description 'Installs/Configures rexbackup'
 long_description 'Installs/Configures rexbackup'
-version '0.1.0'
+version '0.1.1'
 
 depends 'sysctl'
 depends 'rexcore'
